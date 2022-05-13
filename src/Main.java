@@ -10,19 +10,23 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println(">>>>>>>>>?? "+removeDuplicates(new int[]{1,1,2,2,2,3,4,4,5}));
+        System.out.println(">>>>>>>>>?? "+searchInsert(new int[]{1,3,5,6}, 4));
 
     }
-    public static int removeDuplicates(int[] nums) {
-
-        int pointer = 0;
-        for(int i = 1; i< nums.length; i++){
-            if(nums[pointer] != nums[i]){
-                pointer++;
-                nums[pointer] = nums[i];
+    public static int searchInsert(int[] nums, int target) {
+        int first = 0, last = nums.length-1;
+        // 1  3  5  6
+        //
+        while (first < last){
+            int mid = first + (last - first) / 2;
+            if(nums[mid] == target) return mid;
+            else if(nums[mid] > target){
+                last = mid-1;
+            }else{
+                first = mid+1;
             }
         }
-        return pointer+1;
+        return first;
     }
 
 }
