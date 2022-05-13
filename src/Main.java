@@ -10,33 +10,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println(">>>>>>>>>?? "+isValid("([)]"));
+        System.out.println(">>>>>>>>>?? "+removeDuplicates(new int[]{1,1,2,2,2,3,4,4,5}));
 
     }
-    public static boolean isValid(String s) {
-        if(s.length() % 2 != 0){
-            return false;
-        }
-        Stack<Character> stack = new Stack<>();
-        for(char c : s.toCharArray()){
-            switch (c){
-                case '(':
-                    stack.add(')');
-                    break;
-                case '[':
-                    stack.add(']');
-                    break;
-                case '{':
-                    stack.add('}');
-                    break;
-                default:{
-                    if(stack.isEmpty() || stack.pop() != c){
-                        return false;
-                    }
-                }
+    public static int removeDuplicates(int[] nums) {
+
+        int pointer = 0;
+        for(int i = 1; i< nums.length; i++){
+            if(nums[pointer] != nums[i]){
+                pointer++;
+                nums[pointer] = nums[i];
             }
         }
-        return true;
+        return pointer+1;
     }
 
 }
