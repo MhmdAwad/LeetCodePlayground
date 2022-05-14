@@ -1,24 +1,37 @@
+import problem_solving.meduim.AddTwoNumbers.ListNode;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        int[] nums = new int[]{7,1,5,3,6,4};
-        int[] nums1 = new int[]{1,2,3,4,5};
-        int k = maxProfit(nums);
-        System.out.println(">>>>>>>>>?? "+ k);
-    }
-    public static int maxProfit(int[] prices) {
-        int buy =0, sell = 0, profit = 0;
-
-        for(int i=0; i < prices.length-1; i++){
-            buy = prices[i];
-            sell = prices[i+1];
-            if(sell > buy){
-                profit += prices[i+1] - prices[i];
-            }
+        int[] nums = new int[]{7, 1, 5, 3, 6, 4};
+        int[] nums1 = new int[]{1, 2, 3, 4, 5};
+        ListNode node = new ListNode(1);
+        ListNode node1 = new ListNode(2);
+        ListNode node2 = new ListNode(3);
+        ListNode node3 = new ListNode(4);
+        ListNode node4 = new ListNode(5);
+        ListNode node5 = new ListNode(6);
+        node.next = node1;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        ListNode k = swapPairs(node);
+        while (k != null) {
+            System.out.println(">>>>>>>>>?? " + k.val);
+            k = k.next;
         }
-        return profit;
+    }
+
+    public static ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode second = head.next;
+        ListNode res = head.next;
+        head.next = second.next;
+        second.next = head;
+        second.next.next = swapPairs(head.next);
+        return res;
     }
 }
 
