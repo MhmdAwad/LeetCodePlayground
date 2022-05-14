@@ -3,26 +3,22 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int[] nums = new int[]{1,8,6,2,5,4,8,3,7};
-        int[] nums2 = new int[]{3,9,3,4,7,2,12,6};
-        int k = maxArea(nums2);
+        int[] nums = new int[]{7,1,5,3,6,4};
+        int[] nums1 = new int[]{1,2,3,4,5};
+        int k = maxProfit(nums);
         System.out.println(">>>>>>>>>?? "+ k);
     }
-    public static int maxArea(int[] height) {
-        int first=  0, last = height.length-1;
-        int area = 0;
-        while (first < last){
-            area = Math.max(Math.min(height[first], height[last]) * (last - first), area);
-            if(height[first] < height[last]){
-                first++;
-            }else {
-//                area = Math.max(height[last] * (last - first), area);
-                last--;
+    public static int maxProfit(int[] prices) {
+        int buy =0, sell = 0, profit = 0;
+
+        for(int i=0; i < prices.length-1; i++){
+            buy = prices[i];
+            sell = prices[i+1];
+            if(sell > buy){
+                profit += prices[i+1] - prices[i];
             }
-
-
         }
-        return area;
+        return profit;
     }
 }
 
