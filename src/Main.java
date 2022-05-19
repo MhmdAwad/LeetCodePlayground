@@ -6,22 +6,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        int[] nums = new int[]{2,3,6,7};
-//        int[] nums = new int[]{4, 5, 6, 7, 0, 1, 2};
-        int[] nums = new int[]{-1,0,1,2,-1,-4,-2,-3,3,0,4};
-
-        System.out.println(">>>>>>? " + getSum(-3));
+        int value = reverseBits(43261596);
+                System.out.println(">>>>>>? " +value +" == "+ (value == 964176192) );
 
     }
 
-    public static int getSum(int a) {
-
-        int count = 0;
-        while (a != 0){
-            a = a & (a-1);
-            count++;
+    //00000010100101000001111010011100
+    public static int reverseBits(int n) {
+        int sum = 0;
+        for(int i=0; i < 32; i++){
+            sum <<= 1;
+            sum += (n & 1);
+            n >>= 1;
         }
-        return count;
-    }   
+        return sum;
+    }
 }
 
